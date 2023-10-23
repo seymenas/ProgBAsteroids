@@ -2,8 +2,8 @@
 
 int main() 
 {
-    int screenWidth = 1285;
-    int screenHeight = 1024;
+    int screenWidth = 1280;
+    int screenHeight = 1020;
 
     raylib::Window window(screenWidth, screenHeight, "raylib [textures] example - image loading");
     raylib::Texture texture("resources/background.png");
@@ -14,6 +14,7 @@ int main()
         BeginDrawing();
         {
             texture.Draw(screenWidth / 2 - texture.GetWidth() / 2, screenHeight / 2 - texture.GetHeight() / 2);
+
         }
         EndDrawing();
     }
