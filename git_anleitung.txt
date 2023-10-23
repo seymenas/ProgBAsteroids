@@ -1,0 +1,18 @@
+Änderung
+
+Änderungen abfragen:
+git status
+
+Änderungen ins lokale Repository aufnehmen 
+git add [Dateiname]
+ODER
+git add * (alles adden)
+
+DANN
+git commit -m "[message]"
+
+Ins remote abschicken:
+git push
+
+Änderungen holen
+git pull
