@@ -4,7 +4,6 @@
 int screenWidth = 1200;
 int screenHeight = 1024;
 
-
 int main() 
 {
     raylib::Window window(screenWidth, screenHeight, "raylib [textures] example - image loading");
