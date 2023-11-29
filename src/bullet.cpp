@@ -1,32 +1,35 @@
 #include <raylib-cpp.hpp>
 #include "bullet.h"
 
-Bullet::Bullet(float x_, float y_, float vel_x_, float vel_y_, float direction_):texture("resources/bullet.png") {
-    x =  x_;
-    y = y_;
-    vel_x = vel_x_;
-    vel_y = vel_y_;
-    direction = direction_;
+Bullet::Bullet(float startX, float startY, float startDirection)
+{
+    texture.Load("resources/bullet.png");
+    x = startX;
+    y = startY;
+    //vel_x = startVelX * 1.2;
+    //vel_y = startVelY * 1.2;
+    direction = startDirection;
+    speed = 1;
 }
 
 void Bullet::move() {
-    x += vel_x;
-    y += vel_y;
-}
+    // Move the bullet based on its velocity
+    x += sin(direction * (M_PI / 180)) * speed;
+    y += -cos(direction * (M_PI / 180)) * speed;
 
+}
 
 void Bullet::draw() {
-    // Slightly more advanced version: Draw object with rotation around center
-    raylib::Vector2 origin = raylib::Vector2(texture.GetWidth() / 2, texture.GetWidth() / 2);
+    raylib::Rectangle source(0, 0, texture.GetWidth(), texture.GetHeight());
+    raylib::Rectangle dest(x, y, texture.GetWidth(), texture.GetHeight());
+    DrawTexturePro(texture, source, dest, Vector2{(float) texture.GetWidth() / 2,
+                                                  (float) texture.GetHeight() / 2}, direction, WHITE);
+
+    /*
+    // Draw the bullet
     raylib::Rectangle sourceRect = { 0.f, 0.f, static_cast<float>(texture.GetWidth()), static_cast<float>(texture.GetHeight()) };
     raylib::Rectangle destRect = { x, y, static_cast<float>(texture.GetWidth()), static_cast<float>(texture.GetHeight()) };
-    texture.Draw(sourceRect, destRect, origin, direction);
-}
-
-//GETTER FUNCTIONS
-int Bullet::get_x() {
-    return x;
-}
-int Bullet::get_y() {
-    return y;
+    raylib::Vector2 origin = raylib::Vector2(texture.GetWidth() / 2, texture.GetHeight() / 2);
+    texture.Draw(sourceRect, destRect, origin, 0.0f, raylib::WHITE);
+     */
 }

@@ -4,11 +4,11 @@ set(EXECUTABLE_NAME 01_Asteroids)
 
 set(SRC_FILES
     ${CMAKE_CURRENT_LIST_DIR}/src/main.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/src/spaceship.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/src/gameobject.cpp
-
-
-
+    ${CMAKE_CURRENT_LIST_DIR}/src/spaceship.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/src/gameobject.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/src/gamemaster.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/src/bullet.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/src/asteroid.cpp
 )
 
 set(INCLUDE_DIRS

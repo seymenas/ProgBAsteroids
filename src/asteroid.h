@@ -1,13 +1,13 @@
 #pragma once
 #include <raylib-cpp.hpp>
 #include "gameobject.h"
-#include "bullet.h"
 
-class Spaceship : public GameObject{
+class Asteroid : public GameObject {
 public:
-    Spaceship();
+    Asteroid(int screenWidth, int screenHeight);
+
     void move() override;
     void draw() override;
-    Bullet shoot();
-
+private:
+    float scale;
 };
