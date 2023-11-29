@@ -6,8 +6,6 @@
 #include "bullet.h"
 #include "asteroid.h"
 
-
-
 class GameMaster {
 private:
     int screenWidth;

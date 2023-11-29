@@ -1,5 +1,6 @@
 #include "gamemaster.h"
 #include <iostream>
+
 int main()
 {
     GameMaster master;

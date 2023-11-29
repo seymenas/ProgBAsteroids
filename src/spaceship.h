@@ -6,8 +6,7 @@
 class Spaceship : public GameObject{
 public:
     Spaceship();
-    void move() override;
     void draw() override;
+    void move(std::string direction);
     Bullet shoot();
-
 };

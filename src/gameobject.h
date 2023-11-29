@@ -7,7 +7,7 @@ protected:
     float y;
     float vel_x;
     float vel_y;
-    float direction;
+    float rotation;
     double speed;
     virtual void move();
     virtual void draw();
@@ -23,8 +23,5 @@ public:
     //SETTER FUNCTIONS
     void set_x(float x_);
     void set_y(float y_);
-    void set_vel_x(float vel_x_);
-    void set_vel_y(float vel_y_);
     void set_direction(float direction_);
-    void set_speed(double speed_);
 };
