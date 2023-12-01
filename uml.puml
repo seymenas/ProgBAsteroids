@@ -1,10 +1,29 @@
 @startuml
 
 class GameMaster {
-    checkForColissions();
-    createBullet();
-    createTarget();
-    checkSpaceshipLifes();
+    -int screenWidth;
+    -int screenHeight;
+    -raylib::Window window;
+    -raylib::Texture background_texture;
+    -int fontSize;
+
+    -Spaceship ship;
+
+    -std::vector<Bullet> bullets{};
+    -float bulletCooldown;
+    -float timeSinceLastShot;
+
+    -float asteroidCooldown;
+    -float timeSinceLastAsteroid;
+    -std::vector<Asteroid> asteroids{};
+
+    -int lifes;
+    -int score;
+
+    +GameMaster();
+    +void manageGame();
+    -void createAsteroids();
+    -void handleKeyboardInput();
 }
 
 class GameObject {
