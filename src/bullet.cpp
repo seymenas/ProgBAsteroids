@@ -1,15 +1,13 @@
 #include <raylib-cpp.hpp>
 #include "bullet.h"
 
-Bullet::Bullet(float startX, float startY, float startDirection)
+Bullet::Bullet(float start_x, float start_y, float start_direction)
 {
     texture.Load("resources/bullet.png");
-    x = startX;
-    y = startY;
-    //vel_x = startVelX * 1.2;
-    //vel_y = startVelY * 1.2;
-    rotation = startDirection;
-    speed = 1;
+    x = start_x;
+    y = start_y;
+    rotation = start_direction;
+    speed = 1.2;
 }
 
 void Bullet::move() {
@@ -24,12 +22,4 @@ void Bullet::draw() {
     raylib::Rectangle dest(x, y, texture.GetWidth(), texture.GetHeight());
     DrawTexturePro(texture, source, dest, Vector2{(float) texture.GetWidth() / 2,
                                                   (float) texture.GetHeight() / 2}, rotation, WHITE);
-
-    /*
-    // Draw the bullet
-    raylib::Rectangle sourceRect = { 0.f, 0.f, static_cast<float>(texture.GetWidth()), static_cast<float>(texture.GetHeight()) };
-    raylib::Rectangle destRect = { x, y, static_cast<float>(texture.GetWidth()), static_cast<float>(texture.GetHeight()) };
-    raylib::Vector2 origin = raylib::Vector2(texture.GetWidth() / 2, texture.GetHeight() / 2);
-    texture.Draw(sourceRect, destRect, origin, 0.0f, raylib::WHITE);
-     */
 }

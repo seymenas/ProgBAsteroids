@@ -21,6 +21,11 @@ private:
     float timeSinceLastAsteroid;
     std::vector<Asteroid> asteroids{};
 
+    int lifes;
+    int score;
+
+    int fontSize;
+
     void createAsteroids();
     void handleKeyboardInput();
 public:

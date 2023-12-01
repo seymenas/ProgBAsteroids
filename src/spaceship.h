@@ -8,5 +8,6 @@ public:
     Spaceship();
     void draw() override;
     void move(std::string direction);
+    void rotate(std::string direction);
     Bullet shoot();
 };

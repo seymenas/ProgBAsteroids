@@ -4,9 +4,12 @@
 GameMaster::GameMaster()
         : screenWidth(1200), screenHeight(1024),
           window(screenWidth, screenHeight, "Asteroids"),
-          background_texture("resources/background.png"), ship(), bulletCooldown(0.5),
-          timeSinceLastShot(0.0), asteroidCooldown(1),
-          timeSinceLastAsteroid(0.0) {
+          background_texture("resources/background.png"), ship(),
+          bulletCooldown(0.5), timeSinceLastShot(0.0),
+          asteroidCooldown(0.5), timeSinceLastAsteroid(0.0),
+          lifes(0),
+          score(0),
+          fontSize(35) {
 }
 
 void GameMaster::manageGame() {
@@ -16,6 +19,7 @@ void GameMaster::manageGame() {
         {
             background_texture.Draw(screenWidth / 2 - background_texture.GetWidth() / 2,
                                     screenHeight / 2 - background_texture.GetHeight() / 2);
+
             ship.draw();
             createAsteroids();
 
@@ -24,22 +28,26 @@ void GameMaster::manageGame() {
             timeSinceLastShot += GetFrameTime();
             timeSinceLastAsteroid += GetFrameTime();
 
-            for (Bullet & bullet : bullets) {
+            for (Bullet &bullet: bullets) {
                 bullet.draw();
                 bullet.move();
             }
 
-            for (Asteroid & asteroid : asteroids) {
+            for (Asteroid &asteroid: asteroids) {
                 asteroid.draw();
                 asteroid.move();
             }
+            DrawText(("Lifes: " + std::to_string(lifes)).c_str(), 20, 20, fontSize, WHITE);
+            int scoreTextWidth = MeasureText(("Score: " + std::to_string(score)).c_str(), fontSize);
+            DrawText(("Score: " + std::to_string(score)).c_str(), screenWidth - scoreTextWidth - 20,
+                     20, fontSize, WHITE);
         }
         EndDrawing();
     }
 }
 
 void GameMaster::createAsteroids() {
-    if(timeSinceLastAsteroid >= asteroidCooldown) {
+    if (timeSinceLastAsteroid >= asteroidCooldown) {
         asteroids.emplace_back(screenWidth, screenHeight);
         timeSinceLastAsteroid = 0.0;
     }
@@ -61,10 +69,10 @@ void GameMaster::handleKeyboardInput() {
         ship.move("backward");
     }
     if (IsKeyDown(KEY_D)) {
-        ship.move("right");
+        ship.rotate("right");
     }
     if (IsKeyDown(KEY_A)) {
-        ship.move("left");
+        ship.rotate("left");
     }
 }
 

@@ -4,7 +4,7 @@
 
 class Bullet : public GameObject{
 public:
-    Bullet(float startX, float startY, float startDirection);
+    Bullet(float start_x, float start_y, float start_direction);
 
     void move() override;
     void draw() override;
