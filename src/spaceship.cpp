@@ -5,8 +5,6 @@ Spaceship::Spaceship() {
     texture.Load("resources/spaceship.png");
     x = GetScreenWidth() / 2;
     y = GetScreenHeight() / 2;
-    vel_x = 0;
-    vel_y = 0;
     rotation = 0.0;
     speed = 0.5;
 }

@@ -19,20 +19,3 @@ float GameObject::get_x() {
 float GameObject::get_y() {
     return y;
 }
-float GameObject::get_direction() {
-    return rotation;
-}
-double GameObject::get_speed() {
-    return speed;
-}
-
-//SETTER FUNCTIONS
-void GameObject::set_x(float x_) {
-    x = x_;
-}
-void GameObject::set_y(float y_) {
-    y = y_;
-}
-void GameObject::set_direction(float direction_) {
-    rotation = direction_;
-}
