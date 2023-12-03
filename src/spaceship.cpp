@@ -1,4 +1,3 @@
-#include <raylib-cpp.hpp>
 #include "spaceship.h"
 
 Spaceship::Spaceship() {
@@ -27,13 +26,6 @@ void Spaceship::rotate(std::string direction) {
     if(direction == "left") {
         rotation -= 1;
     }
-}
-
-void Spaceship::draw() {
-    raylib::Rectangle source(0, 0, texture.GetWidth(), texture.GetHeight());
-    raylib::Rectangle dest(x, y, texture.GetWidth(), texture.GetHeight());
-    DrawTexturePro(texture, source, dest, Vector2{(float) texture.GetWidth() / 2,
-                                                  (float) texture.GetHeight() / 2}, rotation, WHITE);
 }
 
 Bullet Spaceship::shoot() {

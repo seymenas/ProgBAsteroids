@@ -1,4 +1,3 @@
-#include <raylib-cpp.hpp>
 #include "asteroid.h"
 
 Asteroid::Asteroid(int screenWidth, int screenHeight)
@@ -35,28 +34,4 @@ Asteroid::Asteroid(int screenWidth, int screenHeight)
             rotation = GetRandomValue(180.0, 360.0);
         }
     }
-}
-
-
-
-void Asteroid::move() {
-    // Move the bullet based on its velocity
-    x += sin(rotation * (M_PI / 180)) * speed;
-    y += -cos(rotation * (M_PI / 180)) * speed;
-
-}
-
-void Asteroid::draw() {
-    raylib::Rectangle source(0, 0, texture.GetWidth(), texture.GetHeight());
-    raylib::Rectangle dest(x, y, texture.GetWidth(), texture.GetHeight());
-    DrawTexturePro(texture, source, dest, Vector2{(float) texture.GetWidth() / 2,
-                                                  (float) texture.GetHeight() / 2}, rotation, WHITE);
-
-    /*
-    // Draw the bullet
-    raylib::Rectangle sourceRect = { 0.f, 0.f, static_cast<float>(texture.GetWidth()), static_cast<float>(texture.GetHeight()) };
-    raylib::Rectangle destRect = { x, y, static_cast<float>(texture.GetWidth()), static_cast<float>(texture.GetHeight()) };
-    raylib::Vector2 origin = raylib::Vector2(texture.GetWidth() / 2, texture.GetHeight() / 2);
-    texture.Draw(sourceRect, destRect, origin, 0.0f, raylib::WHITE);
-     */
 }

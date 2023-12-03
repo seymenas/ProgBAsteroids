@@ -7,12 +7,12 @@ protected:
     float y;
     float rotation;
     double speed;
-    virtual void move();
-    virtual void draw();
     raylib::Texture texture;
 
 public:
     GameObject();
+    virtual void move();
+    virtual void draw();
     //GETTER FUNCTIONS
     float get_x();
     float get_y();
