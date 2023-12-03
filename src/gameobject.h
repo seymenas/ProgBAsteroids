@@ -9,6 +9,7 @@ protected:
     double speed;
     raylib::Texture texture;
 
+
 public:
     GameObject();
     virtual void move();
@@ -16,4 +17,5 @@ public:
     //GETTER FUNCTIONS
     float get_x();
     float get_y();
+    raylib::Rectangle dest;
 };

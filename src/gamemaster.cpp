@@ -1,4 +1,5 @@
 #include "gamemaster.h"
+#include <iostream>
 
 GameMaster::GameMaster()
         : screenWidth(1200), screenHeight(1024),
@@ -6,7 +7,7 @@ GameMaster::GameMaster()
           background_texture("resources/background.png"), ship(),
           bulletCooldown(0.5), timeSinceLastShot(0.0),
           asteroidCooldown(0.5), timeSinceLastAsteroid(0.0),
-          lifes(0),
+          lifes(3),
           score(0),
           fontSize(35) {
 }
@@ -27,9 +28,25 @@ void GameMaster::manageGame() {
             timeSinceLastShot += GetFrameTime();
             timeSinceLastAsteroid += GetFrameTime();
 
-            for (Bullet &bullet: bullets) {
-                bullet.draw();
-                bullet.move();
+            for (auto bulletIt = bullets.begin(); bulletIt != bullets.end();) {
+                bulletIt->draw();
+                bulletIt->move();
+
+                bool collided = false;
+                for (auto asteroidIt = asteroids.begin(); asteroidIt != asteroids.end();) {
+                    if (CheckCollisionRecs(asteroidIt->dest, bulletIt->dest)) {
+                        asteroidIt = asteroids.erase(asteroidIt);
+                        collided = true;
+                        score += 10;
+                    } else {
+                        ++asteroidIt;
+                    }
+                }
+                if (collided) {
+                    bulletIt = bullets.erase(bulletIt);
+                } else {
+                    ++bulletIt;
+                }
             }
 
             for (Asteroid &asteroid: asteroids) {
@@ -41,6 +58,7 @@ void GameMaster::manageGame() {
             DrawText(("Score: " + std::to_string(score)).c_str(), screenWidth - scoreTextWidth - 20,
                      20, fontSize, WHITE);
         }
+
         EndDrawing();
     }
 }

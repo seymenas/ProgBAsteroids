@@ -27,4 +27,6 @@ private:
 public:
     GameMaster();
     void manageGame();
+
+    void checkColissionBulletAsteroid(Bullet &bullet);
 };
