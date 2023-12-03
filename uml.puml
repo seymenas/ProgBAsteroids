@@ -19,6 +19,7 @@ class GameMaster {
 
     -int lifes;
     -int score;
+    -int fontSize;
 
     +GameMaster();
     +void manageGame();
@@ -27,34 +28,30 @@ class GameMaster {
 }
 
 class GameObject {
-    -float x;
-    -float y;
-    -float vel_x;
-    -float vel_y;
-    -float direction;
-    -double speed;
-    -raylib::Texture texture;
-    +get_x();
-    +get_y();
-    -move();
-    -draw();
-    -rotate();
+    #float x;
+    #float y;
+    #float rotation;
+    #double speed;
+    #raylib::Texture texture;
+
+    +GameObject();
+    +float get_x();
+    +float get_y();
+    #virtual void move();
+    #virtual void draw();
 }
 
-class Bullets {
+SpaceShip --|> GameObject
+Target --|> GameObject
+Bullet --|> GameObject
+
+class Bullet {
 }
 
 class SpaceShip {
 }
 
-class Targets {
+class Target {
 }
-
-
-SpaceShip --|> GameObject
-Targets --|> GameObject
-Bullets --|> GameObject
-
-GameObject --|> GameMaster
 
 @enduml

@@ -14,18 +14,14 @@ private:
     raylib::Texture background_texture;
     Spaceship ship;
     std::vector<Bullet> bullets{};
-    //raylib::Vector2 bullets;
     float bulletCooldown;
     float timeSinceLastShot;
     float asteroidCooldown;
     float timeSinceLastAsteroid;
     std::vector<Asteroid> asteroids{};
-
     int lifes;
     int score;
-
     int fontSize;
-
     void createAsteroids();
     void handleKeyboardInput();
 public:
