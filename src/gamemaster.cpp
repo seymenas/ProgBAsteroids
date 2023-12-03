@@ -9,7 +9,8 @@ GameMaster::GameMaster()
           asteroidCooldown(0.5), timeSinceLastAsteroid(0.0),
           lifes(3), loseLifeCooldown(3), timeSinceLastLifeLost(0.0),
           score(0),
-          fontSize(35) {
+          statusFontSize(35),
+          gameOverFontSize(50) {
 }
 
 void GameMaster::manageGame() {
@@ -17,38 +18,46 @@ void GameMaster::manageGame() {
     while (!window.ShouldClose()) {
         BeginDrawing();
         {
-            background_texture.Draw(screenWidth / 2 - background_texture.GetWidth() / 2,
-                                    screenHeight / 2 - background_texture.GetHeight() / 2);
+            if(game) {
+                background_texture.Draw(screenWidth / 2 - background_texture.GetWidth() / 2,
+                                        screenHeight / 2 - background_texture.GetHeight() / 2);
 
-            ship.draw();
-            createAsteroids();
-            handleKeyboardInput();
+                ship.draw();
+                createAsteroids();
+                handleKeyboardInput();
 
-            timeSinceLastShot += GetFrameTime();
-            timeSinceLastAsteroid += GetFrameTime();
-            timeSinceLastLifeLost += GetFrameTime();
+                timeSinceLastShot += GetFrameTime();
+                timeSinceLastAsteroid += GetFrameTime();
+                timeSinceLastLifeLost += GetFrameTime();
 
-            for (auto bulletIt = bullets.begin(); bulletIt != bullets.end();) {
-                bulletIt->draw();
-                bulletIt->move();
-                checkColissionAsteroidBullet(bulletIt);
-            }
+                for (auto bulletIt = bullets.begin(); bulletIt != bullets.end();) {
+                    bulletIt->draw();
+                    bulletIt->move();
+                    checkColissionAsteroidBullet(bulletIt);
+                }
 
-            for (auto asteroidIt = asteroids.begin(); asteroidIt != asteroids.end();) {
-                asteroidIt->draw();
-                asteroidIt->move();
+                for (auto asteroidIt = asteroids.begin(); asteroidIt != asteroids.end();) {
+                    asteroidIt->draw();
+                    asteroidIt->move();
 
-                checkColissionAsteroidSpaceship(asteroidIt);
-                checkColissionAsteroidBullet(asteroidIt);
-            }
+                    checkColissionAsteroidSpaceship(asteroidIt);
+                }
 
 
-            DrawText(("Lifes: " + std::to_string(lifes)).c_str(), 20, 20, fontSize, WHITE);
-            int scoreTextWidth = MeasureText(("Score: " + std::to_string(score)).c_str(), fontSize);
-            DrawText(("Score: " + std::to_string(score)).c_str(), screenWidth - scoreTextWidth - 20,
-                     20, fontSize, WHITE);
+                DrawText(("Lifes: " + std::to_string(lifes)).c_str(), 20, 20,
+                         statusFontSize, WHITE);
+                int scoreTextWidth = MeasureText(("Score: " + std::to_string(score)).c_str(),
+                                                 statusFontSize);
+                DrawText(("Score: " + std::to_string(score)).c_str(),
+                         screenWidth - scoreTextWidth - 20, 20, statusFontSize, WHITE);
+
+                if(lifes == 0) {
+                    lifes = 0;
+                    game = false;
+                }
+
+            } else displayGameOverText();
         }
-
         EndDrawing();
     }
 }
@@ -110,4 +119,10 @@ void GameMaster::checkColissionAsteroidBullet(std::vector<Bullet>::iterator& bul
     } else {
         ++bulletIt;
     }
+}
+
+void GameMaster::displayGameOverText() {
+    int gameOverTextWidth = MeasureText("Game Over!", gameOverFontSize);
+    DrawText("Game Over!", screenWidth/2 - gameOverTextWidth/2,
+             screenHeight/2, gameOverFontSize, WHITE);
 }

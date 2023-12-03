@@ -23,11 +23,14 @@ private:
     float loseLifeCooldown;
     float timeSinceLastLifeLost;
     int score;
-    int fontSize;
+    int statusFontSize;
+    int gameOverFontSize;
+    bool game;
     void createAsteroids();
     void handleKeyboardInput();
     void checkColissionAsteroidBullet(std::vector<Bullet>::iterator& bulletIt);
     void checkColissionAsteroidSpaceship(std::vector<Asteroid>::iterator& asteroidIt);
+    void displayGameOverText();
 public:
     GameMaster();
     void manageGame();
