@@ -5,26 +5,29 @@ class GameMaster {
     -int screenHeight;
     -raylib::Window window;
     -raylib::Texture background_texture;
-    -int fontSize;
-
+    -bool game;
+    -int lifes;
+    -float loseLifeCooldown;
+    -float timeSinceLastLifeLost;
+    -int score;
+    -int statusFontSize;
+    -int gameOverFontSize;
     -Spaceship ship;
-
     -std::vector<Bullet> bullets{};
     -float bulletCooldown;
     -float timeSinceLastShot;
-
+    -std::vector<Asteroid> asteroids{};
     -float asteroidCooldown;
     -float timeSinceLastAsteroid;
-    -std::vector<Asteroid> asteroids{};
 
-    -int lifes;
-    -int score;
-    -int fontSize;
+    -void createAsteroids();
+    -void handleKeyboardInput();
+    -void checkColissionAsteroidBullet(std::vector<Bullet>::iterator& bulletIt);
+    -void checkColissionAsteroidSpaceship(std::vector<Asteroid>::iterator& asteroidIt);
+    -void displayGameOverText();
 
     +GameMaster();
     +void manageGame();
-    -void createAsteroids();
-    -void handleKeyboardInput();
 }
 
 class GameObject {
@@ -41,17 +44,24 @@ class GameObject {
     #virtual void draw();
 }
 
-SpaceShip --|> GameObject
-Target --|> GameObject
-Bullet --|> GameObject
-
 class Bullet {
+    +Bullet(float start_x, float start_y, float start_direction);
 }
 
-class SpaceShip {
+class Spaceship {
+    +Spaceship();
+    +void move(std::string direction);
+    +void rotate(std::string direction);
+    +Bullet shoot();
 }
 
-class Target {
+class Asteroid {
+    +Asteroid(int screenWidth, int screenHeight);
+    -float scale;
 }
+
+Spaceship --|> GameObject
+Asteroid --|> GameObject
+Bullet --|> GameObject
 
 @enduml
