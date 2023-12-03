@@ -20,13 +20,15 @@ private:
     float timeSinceLastAsteroid;
     std::vector<Asteroid> asteroids{};
     int lifes;
+    float loseLifeCooldown;
+    float timeSinceLastLifeLost;
     int score;
     int fontSize;
     void createAsteroids();
     void handleKeyboardInput();
+    void checkColissionAsteroidBullet(std::vector<Bullet>::iterator& bulletIt);
+    void checkColissionAsteroidSpaceship(std::vector<Asteroid>::iterator& asteroidIt);
 public:
     GameMaster();
     void manageGame();
-
-    void checkColissionBulletAsteroid(Bullet &bullet);
 };
