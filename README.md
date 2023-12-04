@@ -57,14 +57,14 @@ Verändern Sie Ihre Spaceship-Klasse so, dass sie von Ihrer PhysicsObject-Klasse
 um die Geschwindigkeit des Raumschiffs zu setzen. Ihr Raumschiff sollte sich nun mit konstanter Geschwindigkeit über den
 Bildschirm bewegen.
 
-#### Aufgabe 01_b
+#### Aufgabe 01_c
 
 Nun schauen wir uns Beschleunigung und Reibung an. Beschleunigung ist Veränderung der Geschwindigkeit über die Zeit.
 Reibung ist eine Kraft, die der Bewegungsrichtung entgegenwirkt und die Geschwindigkeit über die Zeit verringert.
 
 Implementieren Sie in Ihrer PhysicsObject-Klasse zwei weitere Member-Variablen: Beschleunigung und Reibung.
-Beschleunigung soll mittels geeigneter von außen setzbar sein (z.B. `void accelerate(raylib::Vector2 acceleration)`).
-Reibung soll konstant sein und nicht veränderbar.
+Beschleunigung soll mittels einer geeigneten Methode von außen setzbar sein (
+z.B. `void accelerate(raylib::Vector2 acceleration)`). Reibung soll konstant sein und nicht veränderbar.
 
 Nun aktualisieren Sie die Update-Methode Ihrer PhysicsObject-Klasse, sodass sie die Geschwindigkeit abhängig von der
 Beschleunigung und Reibung verändert. Sie können folgende vereinfachte Formeln nutzen:

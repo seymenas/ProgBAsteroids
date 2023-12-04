@@ -24,7 +24,7 @@ raylib::Vector2 GameObject::getOrigin() const
 void GameObject::draw()
 {
     // Easy version: Draw object with rotation around origin (top left)
-    //_tex.Draw(_pos, _rot);
+    //tex_.Draw(pos_, rot_);
 
     // Slightly more advanced version: Draw object with rotation around center
     raylib::Vector2 origin = raylib::Vector2(tex_.GetWidth() * scale_ / 2, tex_.GetWidth() * scale_ / 2);
