@@ -9,8 +9,7 @@
 #include "projectile.h"
 
 GameManager::GameManager()
-: _score(0)
-, _asteroidSpawnProbPerFrame(_initialAsteroidSpawnProb)
+: score_(0)
 {
 }
 
@@ -27,7 +26,7 @@ void GameManager::spawnAsteroid()
 
     int asteroidRot = GetRandomValue(0, 359);
 
-    _objects.push_back(std::make_shared<Asteroid>(asteroidPos, asteroidRot, asteroidSize, asteroidVelocity));
+    objects_.push_back(std::make_shared<Asteroid>(asteroidPos, asteroidRot, asteroidSize, asteroidVelocity));
 }
 
 void GameManager::spawnSpaceship()
@@ -35,13 +34,13 @@ void GameManager::spawnSpaceship()
     raylib::Vector2 shipPos = generateRandomPos();
 
     auto ship = std::make_shared<Spaceship>(shipPos);
-    _objects.push_back(ship);
-    _player = ship;
+    objects_.push_back(ship);
+    player_ = ship;
 }
 
 void GameManager::drawObjects() const
 {
-    for(auto obj : _objects)
+    for(auto obj : objects_)
     {
         obj->draw();
     }
@@ -50,8 +49,8 @@ void GameManager::drawObjects() const
 void GameManager::drawHud() const
 {
     std::stringstream ss;
-    ss  << "Health: " << _player->getHealth() << std::endl
-        << "Score: " << _score << std::endl;
+    ss << "Health: " << player_->getHealth() << std::endl
+       << "Score: " << score_ << std::endl;
     DrawText(ss.str().c_str(), 80, 80, 20, LIGHTGRAY);
 }
 
@@ -67,7 +66,7 @@ void GameManager::update()
 {
     GameObjectContainer objectsToDelete;
     // Update objects
-    for(auto obj : _objects)
+    for(auto obj : objects_)
     {
         if(obj->isMarkedForDeletion())
             objectsToDelete.push_back(obj);
@@ -78,7 +77,7 @@ void GameManager::update()
     // Delete objects
     for(auto obj : objectsToDelete)
     {
-        _objects.remove(obj);
+        objects_.remove(obj);
     }
 
     if(IsKeyPressed(KEY_SPACE))
@@ -89,6 +88,6 @@ void GameManager::update()
 
 void GameManager::launchProjectile()
 {
-    auto projectile = std::make_shared<Projectile>(_player->getPosition(), _player->getRotation());
-    _objects.push_back(projectile);
+    auto projectile = std::make_shared<Projectile>(player_->getPosition(), player_->getRotation());
+    objects_.push_back(projectile);
 }

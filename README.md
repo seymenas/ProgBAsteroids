@@ -84,12 +84,12 @@ Verändern Sie die Update-Methode Ihrer Spaceship-Klasse z.B. wie folgt:
 
 ```
     if(IsKeyDown(KEY_W))
-        accelerate(raylib::Vector2{0.f, -_thrust}.Rotate(DEG2RAD * _rot));
+        accelerate(raylib::Vector2{0.f, -thrust_}.Rotate(DEG2RAD * rot_));
 ```
 
-Dies beschleunigt das Raumschiff in Blickrichtung um den Wert `_thrust` (`_rot` ist die aktuelle Rotation des Schiffs in
-Grad). Experimenten Sie mit geeigneten Werten für `_thrust` und `_friction`, bis Sie ein realistisches Verhalten haben.
-Hinweis: Geeignete Startwerte können sein: `_thrust = 600` und `_friction = 0.01f`.
+Dies beschleunigt das Raumschiff in Blickrichtung um den Wert `thrust_` (`rot_` ist die aktuelle Rotation des Schiffs in
+Grad). Experimenten Sie mit geeigneten Werten für `thrust_` und `_friction`, bis Sie ein realistisches Verhalten haben.
+Hinweis: Geeignete Startwerte können sein: `thrust_ = 600` und `_friction = 0.01f`.
 
 Fügen Sie den Code Ihrer PhysicsObject-Klasse dem Protokoll hinzu! Notieren Sie außerdem, welche Änderungen Sie an Ihrer
 Spaceship-Klasse vorgenommen haben.

@@ -13,15 +13,10 @@ class GameManager
     using GameObjectContainer = std::list<std::shared_ptr<GameObject>>;
 
 private:
-    inline static float _initialAsteroidSpawnProb = 0.005;
-    inline static float _asteroidSpawProbIncrease = 0.0005;
+    int score_;
 
-    int _score;
-    float _asteroidSpawnProbPerFrame;
-
-    GameObjectContainer _objects;
-    GameObjectContainer _objectsToSpawn;
-    std::shared_ptr<Spaceship> _player;
+    GameObjectContainer objects_;
+    std::shared_ptr<Spaceship> player_;
 
     raylib::Vector2 generateRandomPos();
 

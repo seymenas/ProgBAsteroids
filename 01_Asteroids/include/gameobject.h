@@ -5,13 +5,13 @@
 class GameObject
 {
 private:
-    raylib::Texture _tex;
-    bool _markedForDeletion;
+    raylib::Texture tex_;
+    bool markedForDeletion_;
 
 protected:
-    float _rot;
-    raylib::Vector2 _pos;
-    float _scale;
+    float rot_;
+    raylib::Vector2 pos_;
+    float scale_;
 
     raylib::Vector2 getOrigin() const;
 

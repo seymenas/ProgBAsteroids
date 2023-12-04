@@ -7,14 +7,12 @@
 class Spaceship : public GameObject
 {
 private:
-    inline static const std::string _texturePath = "./resources/spaceship.png";
-    const float _movementSpeed = 4.0f;
-    const float _thrust = 0.51f;
-    const float _shipFriction = 0.995f;
-    const float _rotationSpeed = 4.5f;
-    const int _maxHealth = 100;
+    inline static const std::string texturePath_ = "./resources/spaceship.png";
+    const float movementSpeed_ = 4.0f;
+    const float rotationSpeed_ = 4.5f;
+    const int maxHealth_ = 100;
 
-    int _health;
+    int health_;
 
 public:
     Spaceship(raylib::Vector2 initialPos);

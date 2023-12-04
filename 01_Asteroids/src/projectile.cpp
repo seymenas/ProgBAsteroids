@@ -1,19 +1,19 @@
 #include "projectile.h"
 
 Projectile::Projectile(raylib::Vector2 initialPos, float rotation)
-: GameObject(initialPos, _texturePath, 1.0f, rotation)
-, _distanceTravelled(0.f)
+: GameObject(initialPos, texturePath_, 1.0f, rotation)
+, distanceTravelled_(0.f)
 {}
 
 void Projectile::update()
 {
-    move(raylib::Vector2{0.f, -_movementSpeed}.Rotate(DEG2RAD * _rot));
-    if(_distanceTravelled > _range)
+    move(raylib::Vector2{0.f, -movementSpeed_}.Rotate(DEG2RAD * rot_));
+    if(distanceTravelled_ > range_)
         markForDeletion();
 }
 
 void Projectile::move(raylib::Vector2 moveVec)
 {
-    _distanceTravelled  += moveVec.Length();
+    distanceTravelled_  += moveVec.Length();
     GameObject::move(moveVec);
 }

@@ -5,27 +5,27 @@
 #include <iomanip>
 
 Asteroid::Asteroid(raylib::Vector2 initialPos, float initialRot, Size initialSize, raylib::Vector2 initialVelocity)
-: GameObject(initialPos, _texturePath, 1.f, initialRot)
-, _size(initialSize)
-, _velocity(initialVelocity)
+: GameObject(initialPos, texturePath_, 1.f, initialRot)
+, size_(initialSize)
+, velocity_(initialVelocity)
 {
     updateScale();
 }
 
 void Asteroid::updateScale()
 {
-    switch(_size) 
+    switch(size_)
     {
         case Size::SMALL:
-            _scale = .2f;
+            scale_ = .2f;
             break;
 
         case Size::MEDIUM:
-            _scale = .5f;
+            scale_ = .5f;
             break;
 
         case Size::BIG:
-            _scale = .8f;
+            scale_ = .8f;
             break;
     }
 }
@@ -33,11 +33,11 @@ void Asteroid::updateScale()
 void Asteroid::update()
 {
     rotate(2);
-    move(_velocity);
+    move(velocity_);
     GameObject::update();
 }
 
 Asteroid::Size Asteroid::getSize() const
 {
-    return _size;
+    return size_;
 }

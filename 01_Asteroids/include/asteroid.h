@@ -15,9 +15,9 @@ public:
     };
 
 private:
-    inline static const std::string _texturePath = "./resources/ohmsteroid.png";
-    Size _size;
-    raylib::Vector2 _velocity;
+    inline static const std::string texturePath_ = "./resources/ohmsteroid.png";
+    Size size_;
+    raylib::Vector2 velocity_;
 
     void updateScale();
 
