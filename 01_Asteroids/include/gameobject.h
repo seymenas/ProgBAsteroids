@@ -16,7 +16,7 @@ protected:
     raylib::Vector2 getOrigin() const;
 
 public:
-    GameObject(raylib::Vector2 initialPos, std::string texturePath, float initialScale = 1.f, float initialRot = 0.f);
+    GameObject(raylib::Vector2 initialPos, std::string texturePath, float initialScale, float initialRot);
 
     virtual ~GameObject();
 

@@ -28,7 +28,7 @@ void GameObject::draw()
 
     // Slightly more advanced version: Draw object with rotation around center
     raylib::Vector2 origin = raylib::Vector2(tex_.GetWidth() * scale_ / 2, tex_.GetWidth() * scale_ / 2);
-    raylib::Rectangle sourceRect = {0.f, 0.f, static_cast<float>(tex_.GetWidth()), static_cast<float>(tex_.GetHeight()) };
+    raylib::Rectangle sourceRect = {0.0, 0.0, static_cast<float>(tex_.GetWidth()), static_cast<float>(tex_.GetHeight()) };
     raylib::Rectangle destRect = {pos_.GetX(), pos_.GetY(), static_cast<float>(tex_.GetWidth()) * scale_, static_cast<float>(tex_.GetHeight()) * scale_ };
     tex_.Draw(sourceRect, destRect, origin, rot_);
 }
@@ -45,14 +45,14 @@ void GameObject::rotate(float deg)
 void GameObject::move(raylib::Vector2 moveVec)
 {
     pos_ += moveVec;
-    if(pos_.x < 0.f)
+    if(pos_.x < 0.0)
         pos_.x = GetScreenWidth();
     else if(pos_.x > GetScreenWidth())
-        pos_.x = 0.f;
-    if(pos_.y < 0.f)
+        pos_.x = 0.0;
+    if(pos_.y < 0.0)
         pos_.y = GetScreenHeight();
     else if(pos_.y > GetScreenHeight())
-        pos_.y = 0.f;
+        pos_.y = 0.0;
 }
 
 float GameObject::getRotation() const

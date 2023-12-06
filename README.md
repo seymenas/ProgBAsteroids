@@ -60,7 +60,9 @@ Bildschirm bewegen.
 #### Aufgabe 01_c
 
 Nun schauen wir uns Beschleunigung und Reibung an. Beschleunigung ist Veränderung der Geschwindigkeit über die Zeit.
-Reibung ist eine Kraft, die der Bewegungsrichtung entgegenwirkt und die Geschwindigkeit über die Zeit verringert.
+Reibung ist eine Kraft, die der Bewegungsrichtung entgegenwirkt und die Geschwindigkeit über die Zeit verringert. Zwar
+gibt es im Weltraum nur sehr geringe Reibungskräfte, allerdings steuert sich das Raumschiff mit stärkerer Reibung
+angenehmer.
 
 Implementieren Sie in Ihrer PhysicsObject-Klasse zwei weitere Member-Variablen: Beschleunigung und Reibung.
 Beschleunigung soll mittels einer geeigneten Methode von außen setzbar sein (
@@ -84,12 +86,12 @@ Verändern Sie die Update-Methode Ihrer Spaceship-Klasse z.B. wie folgt:
 
 ```
     if(IsKeyDown(KEY_W))
-        accelerate(raylib::Vector2{0.f, -thrust_}.Rotate(DEG2RAD * rot_));
+        accelerate(raylib::Vector2{0.f, -thrust}.Rotate(DEG2RAD * rot));
 ```
 
-Dies beschleunigt das Raumschiff in Blickrichtung um den Wert `thrust_` (`rot_` ist die aktuelle Rotation des Schiffs in
-Grad). Experimenten Sie mit geeigneten Werten für `thrust_` und `_friction`, bis Sie ein realistisches Verhalten haben.
-Hinweis: Geeignete Startwerte können sein: `thrust_ = 600` und `_friction = 0.01f`.
+Dies beschleunigt das Raumschiff in Blickrichtung um den Wert `thrust` (`rot` ist die aktuelle Rotation des Schiffs in
+Grad). Experimenten Sie mit geeigneten Werten für `thrust` und der Reibung, bis Sie ein realistisches Verhalten haben.
+Hinweis: Geeignete Startwerte können sein: `thrust = 600` und `Reibung = 0.01`.
 
 Fügen Sie den Code Ihrer PhysicsObject-Klasse dem Protokoll hinzu! Notieren Sie außerdem, welche Änderungen Sie an Ihrer
 Spaceship-Klasse vorgenommen haben.

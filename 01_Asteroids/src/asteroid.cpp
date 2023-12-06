@@ -5,7 +5,7 @@
 #include <iomanip>
 
 Asteroid::Asteroid(raylib::Vector2 initialPos, float initialRot, Size initialSize, raylib::Vector2 initialVelocity)
-: GameObject(initialPos, texturePath_, 1.f, initialRot)
+: GameObject(initialPos, texturePath_, 1.0, initialRot)
 , size_(initialSize)
 , velocity_(initialVelocity)
 {
