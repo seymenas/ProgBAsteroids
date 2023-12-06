@@ -6,8 +6,8 @@ class Projectile : public GameObject
 {
 private:
     inline static const std::string texturePath_ = "./resources/bullet.png";
-    const float movementSpeed_ = 8.f;
-    const float range_ = 400.f;
+    const float movementSpeed_ = 8.0;
+    const float range_ = 400.0;
 
     float distanceTravelled_;
 
