@@ -36,6 +36,7 @@ class GameObject {
     #float rotation;
     #double speed;
     #raylib::Texture texture;
+    +raylib::Rectangle dest;
 
     +GameObject();
     +float get_x();
