@@ -25,6 +25,7 @@ void Projectile::handleCollision(std::shared_ptr<GameObject> otherObj)
     if(asteroid != nullptr)
     {
         markForDeletion();
+
     }
 }
 

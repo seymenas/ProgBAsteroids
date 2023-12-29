@@ -3,12 +3,13 @@
 #include <raylib-cpp.hpp>
 #include <vector>
 
-
 int main()
 {
     const int screenWidth = 1280;
     const int screenHeight = 1024;
     const int numAsteroids = 6;
+    const int asteroidSpawnCoolDown = 3;
+    int timeOfLastAsteroidSpawn = 0;
 
     raylib::Window window(screenWidth, screenHeight, "B:ME PROG3 Asteroids");
     raylib::Texture background("resources/background.png");
@@ -34,6 +35,10 @@ int main()
         {
             manager.update();
             manager.checkCollisions();
+            if((int) GetTime() % asteroidSpawnCoolDown == 0 && timeOfLastAsteroidSpawn != (int) GetTime()) {
+                manager.spawnAsteroid();
+                timeOfLastAsteroidSpawn = (int) GetTime();
+            }
         } else {
             manager.displayGameOverText();
         }

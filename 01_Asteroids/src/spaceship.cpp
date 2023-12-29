@@ -18,7 +18,6 @@ void Spaceship::update()
         rotate(rotationSpeed_);
 
     timeSinceLastLifeLost += GetFrameTime();
-
     PhysicsObject::update();
 }
 
