@@ -1,10 +1,11 @@
 #pragma once
 
-#include "gameobject.h"
+#include "physicsobject.h"
+#include "asteroid.h"
 
 #include <list>
 
-class Spaceship : public GameObject
+class Spaceship : public PhysicsObject
 {
 private:
     inline static const std::string texturePath_ = "./resources/spaceship.png";
@@ -16,6 +17,8 @@ private:
 
 public:
     Spaceship(raylib::Vector2 initialPos);
+
+    void handleCollision(std::shared_ptr<GameObject> other) override;
 
     void update() override;
 

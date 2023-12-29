@@ -1,6 +1,7 @@
 #pragma once
 
 #include <raylib-cpp.hpp>
+#include <memory>
 
 class GameObject
 {
@@ -14,7 +15,6 @@ protected:
     float scale_;
 
     raylib::Vector2 getOrigin() const;
-
 public:
     GameObject(raylib::Vector2 initialPos, std::string texturePath, float initialScale, float initialRot);
 
@@ -35,4 +35,7 @@ public:
     float getRotation() const;
 
     raylib::Vector2 getPosition() const;
+    raylib::Vector2 getSizeDimensions() const;
+
+    virtual void handleCollision(std::shared_ptr<GameObject> other);
 };

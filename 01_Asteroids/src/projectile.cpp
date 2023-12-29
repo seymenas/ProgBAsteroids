@@ -1,3 +1,4 @@
+#include <iostream>
 #include "projectile.h"
 
 Projectile::Projectile(raylib::Vector2 initialPos, float rotation)
@@ -17,3 +18,14 @@ void Projectile::move(raylib::Vector2 moveVec)
     distanceTravelled_  += moveVec.Length();
     GameObject::move(moveVec);
 }
+
+void Projectile::handleCollision(std::shared_ptr<GameObject> otherObj)
+{
+    // Projectile <-> Asteroid
+    std::shared_ptr<Asteroid> asteroid = std::dynamic_pointer_cast<Asteroid>(otherObj);
+    if(asteroid != nullptr)
+    {
+        markForDeletion();
+    }
+}
+

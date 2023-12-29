@@ -36,4 +36,6 @@ public:
     void drawObjects() const;
 
     void drawHud() const;
+
+    void checkCollisions();
 };

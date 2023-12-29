@@ -34,6 +34,7 @@ void GameManager::spawnSpaceship()
     raylib::Vector2 shipPos = generateRandomPos();
 
     auto ship = std::make_shared<Spaceship>(shipPos);
+    ship->set_speed({1, 1});
     objects_.push_back(ship);
     player_ = ship;
 }
@@ -90,4 +91,20 @@ void GameManager::launchProjectile()
 {
     auto projectile = std::make_shared<Projectile>(player_->getPosition(), player_->getRotation());
     objects_.push_back(projectile);
+}
+
+void GameManager::checkCollisions() {
+    for(auto obj1 : objects_)
+    {
+        for(auto obj2 : objects_)
+        {
+            DrawCircle(obj1->getPosition().x, obj1->getPosition().y, obj1->getSizeDimensions().x/2, GREEN);
+            if(CheckCollisionCircles(obj1->getPosition(), obj1->getSizeDimensions().x/2, obj2->getPosition(), obj2->getSizeDimensions().x/2)) {
+                if(obj1 != obj2) {
+                    obj1->handleCollision(obj2);
+                    obj2->handleCollision(obj1);
+                }
+            }
+        }
+    }
 }

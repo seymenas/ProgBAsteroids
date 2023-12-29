@@ -65,6 +65,10 @@ raylib::Vector2 GameObject::getPosition() const
     return pos_;
 }
 
+raylib::Vector2 GameObject::getSizeDimensions() const {
+    return {static_cast<float>(tex_.GetWidth()) * scale_, static_cast<float>(tex_.GetHeight()) * scale_};
+}
+
 void GameObject::markForDeletion()
 {
     markedForDeletion_ = true;
@@ -74,3 +78,6 @@ bool GameObject::isMarkedForDeletion() const
 {
     return markedForDeletion_;
 }
+
+void GameObject::handleCollision(std::shared_ptr<GameObject> other) {
+};

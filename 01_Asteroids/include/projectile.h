@@ -1,6 +1,7 @@
 #pragma once
 
 #include "gameobject.h"
+#include "asteroid.h"
 
 class Projectile : public GameObject
 {
@@ -14,7 +15,10 @@ private:
 public:
     Projectile(raylib::Vector2 initialPos, float rotation);
 
+    void handleCollision(std::shared_ptr<GameObject> other) override;
+
     void update() override;
 
     void move(raylib::Vector2 moveVec) override;
+
 };

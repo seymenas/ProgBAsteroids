@@ -26,5 +26,7 @@ public:
 
     void update() override;
 
+    void handleCollision(std::shared_ptr<GameObject> other) override;
+
     Size getSize() const;
 };

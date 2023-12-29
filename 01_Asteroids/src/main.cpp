@@ -32,6 +32,7 @@ int main()
         manager.update();
         manager.drawObjects();
         manager.drawHud();
+        manager.checkCollisions();
 
         EndDrawing();
     }
