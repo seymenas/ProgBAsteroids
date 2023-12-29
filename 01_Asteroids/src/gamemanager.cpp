@@ -1,7 +1,6 @@
 #include <iostream>
 #include <memory>
 #include <sstream>
-#include <variant>
 
 #include "gamemanager.h"
 #include "asteroid.h"
@@ -85,6 +84,11 @@ void GameManager::update()
     {
         launchProjectile();
     }
+
+    if(player_->getHealth() <= 0)
+    {
+        game_ = false;
+    }
 }
 
 void GameManager::launchProjectile()
@@ -98,7 +102,7 @@ void GameManager::checkCollisions() {
     {
         for(auto obj2 : objects_)
         {
-            DrawCircle(obj1->getPosition().x, obj1->getPosition().y, obj1->getSizeDimensions().x/2, GREEN);
+            //DrawCircle(obj1->getPosition().x, obj1->getPosition().y, obj1->getSizeDimensions().x/2, GREEN);
             if(CheckCollisionCircles(obj1->getPosition(), obj1->getSizeDimensions().x/2, obj2->getPosition(), obj2->getSizeDimensions().x/2)) {
                 if(obj1 != obj2) {
                     obj1->handleCollision(obj2);
@@ -107,4 +111,14 @@ void GameManager::checkCollisions() {
             }
         }
     }
+}
+
+void GameManager::displayGameOverText() {
+    int gameOverTextWidth = MeasureText("Game Over!", 80);
+    DrawText("Game Over!", GetScreenWidth()/2 - gameOverTextWidth/2,
+             GetScreenHeight()/2, 80, WHITE);
+}
+
+bool GameManager::getGameStatus() {
+    return game_;
 }

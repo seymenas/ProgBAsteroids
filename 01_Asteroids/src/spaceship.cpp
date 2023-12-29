@@ -17,6 +17,8 @@ void Spaceship::update()
     if(IsKeyDown(KEY_D))
         rotate(rotationSpeed_);
 
+    timeSinceLastLifeLost += GetFrameTime();
+
     PhysicsObject::update();
 }
 
@@ -25,8 +27,10 @@ void Spaceship::handleCollision(std::shared_ptr<GameObject> otherObj)
     std::shared_ptr<Asteroid> asteroid = std::dynamic_pointer_cast<Asteroid>(otherObj);
     if(asteroid != nullptr)
     {
-        std::cout << "SPACESHIP COLISSION WITH ASTEROID" << std::endl;
-        health_ = health_ - 10;
+        if(timeSinceLastLifeLost >= loseLifeCoolDown) {
+            health_ = health_ - 50;
+            timeSinceLastLifeLost = 0;
+        }
     }
 }
 

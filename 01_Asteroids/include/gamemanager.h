@@ -14,9 +14,9 @@ class GameManager
 
 private:
     int score_;
-
     GameObjectContainer objects_;
     std::shared_ptr<Spaceship> player_;
+    bool game_ = true;
 
     raylib::Vector2 generateRandomPos();
 
@@ -38,4 +38,8 @@ public:
     void drawHud() const;
 
     void checkCollisions();
+
+    void displayGameOverText();
+
+    bool getGameStatus();
 };

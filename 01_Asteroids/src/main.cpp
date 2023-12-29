@@ -28,12 +28,15 @@ int main()
         BeginDrawing();
         window.ClearBackground(RAYWHITE);
         background.Draw(raylib::Vector2(0, 0));
-
-        manager.update();
         manager.drawObjects();
         manager.drawHud();
-        manager.checkCollisions();
-
+        if(manager.getGameStatus())
+        {
+            manager.update();
+            manager.checkCollisions();
+        } else {
+            manager.displayGameOverText();
+        }
         EndDrawing();
     }
 
