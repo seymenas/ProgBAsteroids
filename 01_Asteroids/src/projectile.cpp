@@ -21,7 +21,6 @@ void Projectile::move(raylib::Vector2 moveVec)
 
 void Projectile::handleCollision(std::shared_ptr<GameObject> otherObj)
 {
-    // Projectile <-> Asteroid
     std::shared_ptr<Asteroid> asteroid = std::dynamic_pointer_cast<Asteroid>(otherObj);
     if(asteroid != nullptr)
     {

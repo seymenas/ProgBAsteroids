@@ -40,11 +40,9 @@ void Asteroid::update()
 
 void Asteroid::handleCollision(std::shared_ptr<GameObject> otherObj)
 {
-    // Asteroid <-> Projectile
     std::shared_ptr<Projectile> projectile = std::dynamic_pointer_cast<Projectile>(otherObj);
     if(projectile != nullptr)
     {
-        std::cout << "ASTEROID COLISSION WITH PROJECTILE" << std::endl;
         markForDeletion();
     }
 }

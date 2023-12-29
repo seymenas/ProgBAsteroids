@@ -28,7 +28,7 @@ void Spaceship::handleCollision(std::shared_ptr<GameObject> otherObj)
     if(asteroid != nullptr)
     {
         if(timeSinceLastLifeLost >= loseLifeCoolDown) {
-            health_ = health_ - 50;
+            health_ = health_ - 20;
             timeSinceLastLifeLost = 0;
         }
     }
