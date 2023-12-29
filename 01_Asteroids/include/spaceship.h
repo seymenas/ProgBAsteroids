@@ -12,8 +12,8 @@ private:
     const float movementSpeed_ = 4.0;
     const float rotationSpeed_ = 4.5;
     const int maxHealth_ = 100;
-    float loseLifeCoolDown = 3.0;
-    float timeSinceLastLifeLost = 0.0;
+    float loseLifeCoolDown_ = 3.0;
+    float timeSinceLastLifeLost_ = 0.0;
     int health_;
 
 public:

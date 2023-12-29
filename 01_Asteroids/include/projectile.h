@@ -9,7 +9,6 @@ private:
     inline static const std::string texturePath_ = "./resources/bullet.png";
     const float movementSpeed_ = 8.0;
     const float range_ = 400.0;
-
     float distanceTravelled_;
 
 public:
